@@ -35,8 +35,6 @@ public class GameEngine extends SurfaceView implements Runnable {
     Canvas canvas;
     Paint paintbrush;
 
-
-
     // -----------------------------------
     // GAME SPECIFIC VARIABLES
     // -----------------------------------
@@ -57,7 +55,6 @@ public class GameEngine extends SurfaceView implements Runnable {
 
         this.holder = this.getHolder();
         this.paintbrush = new Paint();
-
         this.screenWidth = w;
         this.screenHeight = h;
         this.printScreenInfo();
@@ -144,6 +141,10 @@ public class GameEngine extends SurfaceView implements Runnable {
             canvas.drawBitmap(this.enemy.getBitmap(),this.enemy.getxPosition(),this.enemy.getyPosition(),paintbrush);
             // DRAW THE PLAYER HITBOX
             // ------------------------
+            paintbrush.setColor(Color.BLUE);
+
+            canvas.drawRect(this.player.getHitbox(),paintbrush);
+            canvas.drawRect(this.enemy.getHitbox(),paintbrush);
             // 1. change the paintbrush settings so we can see the hitbox
             paintbrush.setColor(Color.BLUE);
             paintbrush.setStyle(Paint.Style.STROKE);
@@ -176,7 +177,6 @@ public class GameEngine extends SurfaceView implements Runnable {
         if (userAction == MotionEvent.ACTION_DOWN) {
             Log.d(TAG, "Person tapped the screen");
           this.player.setDirection(0);
-
 
         }
         else if (userAction == MotionEvent.ACTION_UP) {
