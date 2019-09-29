@@ -12,7 +12,7 @@ public class Player {
     // PROPERTIES
   Bitmap playerImage;
 
-  Rect hitbox;
+  Rect playerHitbox;
   int xPosition;
   //initial position player is not moving
   int direction=-1;
@@ -28,7 +28,7 @@ public class Player {
         this.playerImage = BitmapFactory.decodeResource(context.getResources(),R.drawable.player_ship);
 
         // 3. Set the default hitbox - all enemies have same hitbox
-        this.hitbox = new Rect(
+        this.playerHitbox = new Rect(
                 this.xPosition,
                 this.yPosition,
                 this.xPosition + this.playerImage.getWidth(),
@@ -48,8 +48,8 @@ public class Player {
             this.yPosition=this.yPosition+15;
         }
 
-         this.hitbox.top=this.yPosition;
-         this.hitbox.bottom=this.yPosition+this.playerImage.getHeight();
+         this.playerHitbox.top=this.yPosition;
+         this.playerHitbox.bottom=this.yPosition+this.playerImage.getHeight();
     }
 
     // GETTER AND SETTER METHODS
@@ -62,11 +62,11 @@ public class Player {
     }
 
     public Rect getHitbox() {
-        return hitbox;
+        return playerHitbox;
     }
 
     public void setHitbox(Rect hitbox) {
-        this.hitbox = hitbox;
+        this.playerHitbox = hitbox;
     }
 
     public int getxPosition() {

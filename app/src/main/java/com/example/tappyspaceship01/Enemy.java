@@ -11,7 +11,7 @@ public class Enemy {
     // Image
     // Hitbox
      Bitmap image;
-     Rect hitbox1;
+     Rect enemyHitbox;
      int xPosition;
      int yPosition;
 
@@ -25,7 +25,7 @@ public class Enemy {
         this.image = BitmapFactory.decodeResource(context.getResources(), R.drawable.alien_ship2);
 
         // 3. Set the default hitbox - all enemies have same hitbox
-        this.hitbox1 = new Rect(
+        this.enemyHitbox = new Rect(
                 this.xPosition,
                 this.yPosition,
                 this.xPosition + this.image.getWidth(),
@@ -37,8 +37,8 @@ public class Enemy {
     public  void updateEnemyPosition()
     {
         this.setxPosition(xPosition-25);
-        this.hitbox1.left=this.xPosition;
-        this.hitbox1.right=this.getxPosition()+this.image.getWidth();
+        this.enemyHitbox.left=this.xPosition;
+        this.enemyHitbox.right=this.getxPosition()+this.image.getWidth();
     }
 
     // Getter and setters
@@ -51,11 +51,11 @@ public class Enemy {
 
 
     public Rect getHitbox() {
-        return hitbox1;
+        return enemyHitbox;
     }
 
     public void setHitbox(Rect hitbox) {
-        this.hitbox1 = hitbox;
+        this.enemyHitbox = hitbox;
     }
 
     public int getxPosition() {

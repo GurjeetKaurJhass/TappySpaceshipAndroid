@@ -132,6 +132,13 @@ public class GameEngine extends SurfaceView implements Runnable {
           this.enemy.setxPosition(screenWidth);
       }
 
+      if(this.player.getHitbox().intersect(this.enemy.getHitbox())==true)
+
+      {
+          Log.d(TAG,"Player has collided with the enemy");
+      }
+
+
     }
 
     public void redrawSprites() {
@@ -181,12 +188,12 @@ public class GameEngine extends SurfaceView implements Runnable {
         int userAction = event.getActionMasked();
         //@TODO: What should happen when person touches the screen?
         if (userAction == MotionEvent.ACTION_DOWN) {
-            Log.d(TAG, "Person tapped the screen");
+            //Log.d(TAG, "Person tapped the screen");
           this.player.setDirection(0);
 
         }
         else if (userAction == MotionEvent.ACTION_UP) {
-            Log.d(TAG, "Person lifted finger");
+           // Log.d(TAG, "Person lifted finger");
             this.player.setDirection(1);
         }
 
