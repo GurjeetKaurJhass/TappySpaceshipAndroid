@@ -127,7 +127,7 @@ public class GameEngine extends SurfaceView implements Runnable {
     public void updatePositions() {
         // @TODO: Update position of player
 
-
+      this.player.updatePlayerPosition();
 
     }
 
@@ -175,11 +175,13 @@ public class GameEngine extends SurfaceView implements Runnable {
         //@TODO: What should happen when person touches the screen?
         if (userAction == MotionEvent.ACTION_DOWN) {
             Log.d(TAG, "Person tapped the screen");
+          this.player.setDirection(0);
 
 
         }
         else if (userAction == MotionEvent.ACTION_UP) {
             Log.d(TAG, "Person lifted finger");
+            this.player.setDirection(1);
         }
 
         return true;

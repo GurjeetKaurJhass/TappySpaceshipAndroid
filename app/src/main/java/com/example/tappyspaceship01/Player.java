@@ -11,7 +11,8 @@ public class Player {
   Bitmap playerImage;
   Rect hitbox;
   int xPosition;
-  int direction;
+  //initial position player is not moving
+  int direction=-1;
   int yPosition;
 
     public Player(Context context, int x, int y) {
@@ -31,6 +32,18 @@ public class Player {
 //                this.playerImage.getHeight());
     }
 
+
+     public void updatePlayerPosition()
+    {
+        if(this.direction==0)
+        {
+            this.yPosition=this.yPosition-15;
+        }
+        else if(this.direction==1)
+        {
+            this.yPosition=this.yPosition+15;
+        }
+    }
 
     // GETTER AND SETTER METHODS
     public Bitmap getBitmap() {
@@ -65,4 +78,11 @@ public class Player {
         this.yPosition = yPosition;
     }
 
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 }
