@@ -37,8 +37,9 @@ public class Player {
 
 
      public void updatePlayerPosition()
-    {
-        if(this.direction==0)
+     {
+
+         if(this.direction==0)
         {
             this.yPosition=this.yPosition-15;
         }
@@ -46,6 +47,9 @@ public class Player {
         {
             this.yPosition=this.yPosition+15;
         }
+
+         this.hitbox.top=this.yPosition;
+         this.hitbox.bottom=this.yPosition+this.playerImage.getHeight();
     }
 
     // GETTER AND SETTER METHODS
