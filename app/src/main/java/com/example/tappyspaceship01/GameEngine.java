@@ -135,7 +135,15 @@ public class GameEngine extends SurfaceView implements Runnable {
       if(this.player.getHitbox().intersect(this.enemy.getHitbox())==true)
 
       {
-          Log.d(TAG,"Player has collided with the enemy");
+          //Log.d(TAG,"Player has collided with the enemy");
+
+          this.player.setxPosition(100);
+          this.player.setyPosition(600);
+          this.player.getHitbox().left=this.player.getxPosition();
+          this.player.getHitbox().top=this.player.getyPosition();
+          this.player.getHitbox().bottom=this.player.getyPosition()+this.player.playerImage.getHeight();
+
+
       }
 
 
@@ -162,8 +170,6 @@ public class GameEngine extends SurfaceView implements Runnable {
             paintbrush.setColor(Color.BLUE);
             paintbrush.setStyle(Paint.Style.STROKE);
             paintbrush.setStrokeWidth(5);
-
-
 
             //----------------------------------------
             this.holder.unlockCanvasAndPost(canvas);
