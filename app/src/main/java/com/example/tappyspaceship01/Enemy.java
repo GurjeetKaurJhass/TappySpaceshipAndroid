@@ -33,6 +33,14 @@ public class Enemy {
    );
     }
 
+
+    public  void updateEnemyPosition()
+    {
+        this.setxPosition(xPosition-25);
+        this.hitbox1.left=this.xPosition;
+        this.hitbox1.right=this.getxPosition()+this.image.getWidth();
+    }
+
     // Getter and setters
     // Autogenerate this by doing Right Click --> Generate --> Getter&Setter
 

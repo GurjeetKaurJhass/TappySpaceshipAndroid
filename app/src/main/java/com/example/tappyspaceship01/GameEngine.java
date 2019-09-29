@@ -125,6 +125,12 @@ public class GameEngine extends SurfaceView implements Runnable {
         // @TODO: Update position of player
 
       this.player.updatePlayerPosition();
+      this.enemy.updateEnemyPosition();
+
+      if(this.enemy.getxPosition()<=0)
+      {
+          this.enemy.setxPosition(screenWidth);
+      }
 
     }
 
