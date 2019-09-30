@@ -22,6 +22,8 @@ public class GameEngine extends SurfaceView implements Runnable {
     // screen size
     int screenHeight;
     int screenWidth;
+    int lives=10;
+
 
     // game state
     boolean gameIsRunning;
@@ -60,9 +62,9 @@ public class GameEngine extends SurfaceView implements Runnable {
         this.printScreenInfo();
         this.spawnPlayer();
         this.spawnEnemyShips();
+
         // @TODO: Add your sprites
         // @TODO: Any other game setup
-
     }
 
 
@@ -74,6 +76,8 @@ public class GameEngine extends SurfaceView implements Runnable {
     private void spawnPlayer() {
         //@TODO: Start the player at the left side of screen
         player=new Player(this.getContext(),100,100);
+
+
     }
 
 
@@ -94,6 +98,7 @@ public class GameEngine extends SurfaceView implements Runnable {
             this.updatePositions();
             this.redrawSprites();
             this.setFPS();
+
         }
     }
 
@@ -136,14 +141,12 @@ public class GameEngine extends SurfaceView implements Runnable {
 
       {
           //Log.d(TAG,"Player has collided with the enemy");
-
           this.player.setxPosition(100);
           this.player.setyPosition(600);
           this.player.getHitbox().left=this.player.getxPosition();
           this.player.getHitbox().top=this.player.getyPosition();
           this.player.getHitbox().bottom=this.player.getyPosition()+this.player.playerImage.getHeight();
-
-
+          lives=lives-1;
       }
 
 
@@ -163,13 +166,15 @@ public class GameEngine extends SurfaceView implements Runnable {
             // DRAW THE PLAYER HITBOX
             // ------------------------
             paintbrush.setColor(Color.BLUE);
-
             canvas.drawRect(this.player.getHitbox(),paintbrush);
             canvas.drawRect(this.enemy.getHitbox(),paintbrush);
             // 1. change the paintbrush settings so we can see the hitbox
             paintbrush.setColor(Color.BLUE);
             paintbrush.setStyle(Paint.Style.STROKE);
             paintbrush.setStrokeWidth(5);
+            paintbrush.setColor(Color.BLACK);
+            paintbrush.setTextSize(60);
+            canvas.drawText("Lives remaining:"+lives,1100,800,paintbrush);
 
             //----------------------------------------
             this.holder.unlockCanvasAndPost(canvas);
@@ -201,6 +206,8 @@ public class GameEngine extends SurfaceView implements Runnable {
         else if (userAction == MotionEvent.ACTION_UP) {
            // Log.d(TAG, "Person lifted finger");
             this.player.setDirection(1);
+
+
         }
 
         return true;

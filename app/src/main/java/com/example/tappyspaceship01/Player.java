@@ -18,6 +18,7 @@ public class Player {
   int direction=-1;
   int yPosition;
 
+
     public Player(Context context, int x, int y) {
 
         //set initial position of the player.
@@ -33,6 +34,7 @@ public class Player {
                 this.yPosition,
                 this.xPosition + this.playerImage.getWidth(),
                 this.yPosition+ this.playerImage.getHeight());
+
     }
 
 
@@ -50,6 +52,7 @@ public class Player {
 
          this.playerHitbox.top=this.yPosition;
          this.playerHitbox.bottom=this.yPosition+this.playerImage.getHeight();
+
     }
 
     // GETTER AND SETTER METHODS
